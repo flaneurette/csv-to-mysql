@@ -10,14 +10,14 @@ $dbname = "";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-   // die("Connection failed: " . $conn->connect_error);
+	die("Connection failed: " . $conn->connect_error);
 } 
 
 function onlyAlphanumeric($text) {
-  return preg_replace("[^A-Za-z]", "", $text);
+ 	return preg_replace("[^A-Za-z]", "", $text);
 }
 
-if(isset($_POST['table'])) {
+if($_POST['table']) {
 	
 	$table = $_REQUEST['table'];
 	$fields = $_REQUEST['fields'];
@@ -71,18 +71,18 @@ $conn->query($alttable) or die(mysqli_error($conn));
 }     
         
 ?>
+
 <style>
 span, input {
 	margin:10px;
 }
 </style>
-<fieldset>
-<form action='' enctype='multipart/form-data'  method='post'>
 
-     <span>File: <input type='file' name='file_upload'></span> <br>
-	 <span>Table Name: <input type="text" name="table" value=""></span>
-	 <span>Col Name: <input type="text" name="col" value=""></span>
-	 <span>Fields: <input type="text" name="fields" value=""> (apple,pears,lemons)</span>
-     <input type='submit' name='Submit' value='Upload CSV' />
- </form>
- </fieldset>
+<fieldset>
+	<form action='' enctype='multipart/form-data'  method='post'>
+    	 	<span>File: <input type='file' name='file_upload'></span> <br>
+	 	<span>Table Name: <input type="text" name="table" value=""></span>
+		<span>Fields: <input type="text" name="fields" value=""> (apple,pears,lemons)</span>
+     		<input type='submit' name='Submit' value='Upload CSV' />
+	</form>
+</fieldset>
